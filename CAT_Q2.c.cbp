@@ -1,41 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="CAT_Q2.c" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/CAT_Q2.c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/CAT_Q2.c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-		</Compiler>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Extensions>
-			<lib_finder disable_auto="1" />
-		</Extensions>
-	</Project>
-</CodeBlocks_project_file>
+#include <stdio.h>
+
+int main() {
+    float hours_worked,hourly_wage,gross_pay,taxes,net_pay;
+    //Request user input for hours worked and hourly wages
+    printf("Enter hours worked in a week: ");
+    scanf("%f",&hours_worked);
+    printf("Enter hourly wages: ");
+    scanf("%f",&hourly_wage);
+    //Calculate gross pay
+    if (hours_worked > 40){
+        //Calculate overtime pay
+        gross_pay=(40*hourly_wage) + ((hours_worked-40)*hourly_wage*1.5);
+    } else {
+        gross_pay = hours_worked*hourly_wage;
+    }
+    // Calculate taxes
+    if (gross_pay<=600) {
+        taxes=gross_pay * 0.15;
+        } else {
+        taxes = ( 600 * 0.15)+((gross_pay-600)*0.20);
+      }
+      //Calculate net pay
+      net_pay=gross_pay - taxes;
+      //Display results
+      printf("Taxes: $%.2f\n ",gross_pay);
+      printf("Taxes: $%.2f\n",taxes);
+      printf("Net Pay: $%.2f\n",net_pay);
+
+    return 0;
+}
+
